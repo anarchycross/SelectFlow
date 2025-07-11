@@ -1,8 +1,0 @@
-@@ .. @@
-     envVars:
-       - key: PYTHON_VERSION
-         value: 3.11.0
-       - key: SECRET_KEY
-         generateValue: true
--      - key: GEMINI_API_KEY
--        value: AIzaSyA6EBt8gdxP_zTYmyTkQgd7AP0lfS_7Gl8

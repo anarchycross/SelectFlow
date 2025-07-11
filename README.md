@@ -27,12 +27,30 @@ python -m http.server 8000
 - **Frontend**: http://localhost:8000
 - **Backend API**: http://localhost:5001
 
+## 📋 Pré-requisitos
+
+- Python 3.7 ou superior
+- Navegador web moderno
+
+## 🛠️ Instalação
+
+1. Clone o repositório
+2. Instale as dependências do backend:
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+3. Execute o projeto:
+   ```bash
+   python start-dev.py
+   ```
+
 ## 📋 Funcionalidades
 
 ### Para Empresas
 - Dashboard com métricas de recrutamento
 - Gerenciamento de vagas
-- Análise de candidatos com IA
+- Análise de candidatos
 - Sistema de entrevistas
 
 ### Para Candidatos
@@ -51,7 +69,6 @@ python -m http.server 8000
 ### Backend
 - Python Flask
 - SQLite Database
-- Google Gemini AI
 - RESTful API
 
 ## 👥 Usuários de teste
@@ -82,7 +99,13 @@ selectflow/
 
 ## 🔧 Desenvolvimento
 
-O projeto está configurado para desenvolvimento local com hot-reload automático. As alterações no frontend são refletidas imediatamente, e o backend reinicia automaticamente quando há mudanças no código Python.
+O projeto está configurado para desenvolvimento local. As alterações no frontend são refletidas imediatamente ao recarregar a página, e o backend pode ser reiniciado manualmente quando necessário.
+
+### 🐛 Solução de problemas
+
+- **Erro de porta ocupada**: Certifique-se de que as portas 8000 e 5001 estão livres
+- **Erro de dependências**: Execute `pip install -r requirements.txt` no diretório backend
+- **Banco de dados**: O banco SQLite é criado automaticamente na primeira execução
 
 ## 📝 Licença
 
