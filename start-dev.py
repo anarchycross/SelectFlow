@@ -42,6 +42,9 @@ def main():
     print("Frontend: http://localhost:8000")
     print("Backend:  http://localhost:5001")
     print("=" * 40)
+    print("IMPORTANTE: Certifique-se de que ambos os servidores estão rodando!")
+    print("1. Backend deve estar em http://localhost:5001")
+    print("2. Frontend deve estar em http://localhost:8000")
     print("Press Ctrl+C to stop both servers")
     print()
     
@@ -50,7 +53,7 @@ def main():
     backend_thread.start()
     
     # Give backend time to start
-    time.sleep(2)
+    time.sleep(3)
     
     # Start frontend in main thread
     try:

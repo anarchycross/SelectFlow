@@ -72,8 +72,10 @@ class AuthManager {
 
         try {
             this.setLoading(submitBtn, true);
+            console.log('Attempting login with:', { email, userType });
             
             const response = await window.apiService.login(email, password, userType);
+            console.log('Login response:', response);
             
             if (response && response.user) {
                 this.currentUser = {

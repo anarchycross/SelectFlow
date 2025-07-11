@@ -1,42 +1,52 @@
 // API service for backend communication
 class ApiService {
     constructor() {
-        this.baseURL = this.getBaseURL();
-    }
-
-    getBaseURL() {
-        // Check if we're in development or production
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            return 'http://localhost:5001/api';
-        }
-        // For production, use relative URLs
-        return '/api';
+        this.baseURL = 'http://localhost:5001/api';
     }
 
     async request(endpoint, options = {}) {
         const url = `${this.baseURL}${endpoint}`;
         
         const config = {
+            mode: 'cors',
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json',
                 ...options.headers,
             },
             ...options,
         };
 
         try {
+            console.log(`Making request to: ${url}`, config);
             const response = await fetch(url, config);
-            const data = await response.json();
-
+            console.log(`Response status: ${response.status}`);
+            
             if (!response.ok) {
-                throw new Error(data.error || 'Request failed');
+                const errorText = await response.text();
+                console.error(`HTTP Error ${response.status}:`, errorText);
+                
+                try {
+                    const errorData = JSON.parse(errorText);
+                    throw new Error(errorData.error || `HTTP ${response.status}`);
+                } catch (parseError) {
+                    throw new Error(`HTTP ${response.status}: ${errorText || 'Unknown error'}`);
+                }
             }
-
+            
+            const data = await response.json();
+            console.log('Response data:', data);
             return data;
+            
         } catch (error) {
             console.error(`API Error (${endpoint}):`, error);
-            throw error;
+            
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                throw new Error('Não foi possível conectar ao servidor. Verifique se o backend está rodando na porta 5001.');
+            }
+            
+            throw new Error(error.message || 'Erro de conexão com o servidor');
         }
     }
 
