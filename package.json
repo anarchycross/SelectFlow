@@ -4,8 +4,8 @@
   "description": "SelectFlow - Plataforma de Recrutamento com IA",
   "main": "index.html",
   "scripts": {
-    "dev": "python -m http.server 8000",
-    "start": "python -m http.server 8000",
+    "dev": "npx http-server -p 8000 -c-1",
+    "start": "npx http-server -p 8000 -c-1",
     "backend": "cd backend && python run.py",
     "dev:full": "concurrently \"npm run backend\" \"npm run dev\""
   },

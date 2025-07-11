@@ -30,7 +30,7 @@ def start_frontend():
     os.chdir(frontend_dir)
     
     try:
-        subprocess.run([sys.executable, "-m", "http.server", "8000"], check=True)
+        subprocess.run(["npx", "http-server", "-p", "8000", "-c-1"], check=True)
     except KeyboardInterrupt:
         print("\n🛑 Frontend server stopped")
     except Exception as e:
