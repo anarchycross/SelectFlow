@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SelectFlow - Plataforma de Recrutamento com IA</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Carregando...</p>
+            </div>
+        </div>
+
+        <!-- Preview Landing Page -->
+        <div id="preview-landing" class="page hidden">
+            <!-- Header -->
+            <header class="header">
+                <div class="container">
+                    <div class="header-content">
+                        <div class="logo">
+                            <img src="MaletaSF.png" alt="SelectFlow" class="logo-icon">
+                            <img src="SelectFlow_2.png" alt="SelectFlow" class="logo-text">
+                        </div>
+                        <div class="header-actions">
+                            <button class="btn btn-ghost" onclick="showLogin()">Entrar</button>
+                            <button class="btn btn-primary" onclick="showRegister()">Cadastrar-se</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <img src="SelectFlow_3.png" alt="SelectFlow" class="hero-logo">
+                        <h1 class="hero-title">
+                            O talento certo no lugar certo
+                            <span class="text-purple">muda tudo.</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Conectamos empresas e candidatos através de uma plataforma inteligente 
+                            que facilita o processo de recrutamento e seleção.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary btn-lg" onclick="showRegister()">
+                                Encontrar Talentos
+                                <span class="icon">→</span>
+                            </button>
+                            <button class="btn btn-outline btn-lg" onclick="showRegister()">
+                                Buscar Vagas
+                                <span class="icon">💼</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" id="total-jobs">150+</div>
+                            <div class="stat-label">Vagas Ativas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="total-companies">45+</div>
+                            <div class="stat-label">Empresas Parceiras</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="total-candidates">1200+</div>
+                            <div class="stat-label">Candidatos Cadastrados</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Job Search Section -->
+            <section class="job-search">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Explore Oportunidades</h2>
+                        <p>Descubra vagas que combinam com seu perfil</p>
+                        <div class="search-box">
+                            <input type="text" id="job-search-input" placeholder="Buscar por cargo, empresa ou tecnologia...">
+                            <span class="search-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div id="jobs-grid" class="jobs-grid">
+                        <!-- Jobs will be loaded here -->
+                    </div>
+                    <div class="section-footer">
+                        <button class="btn btn-primary" onclick="showLogin()">
+                            Ver Todas as Vagas
+                            <span class="icon">→</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="container">
+                    <h2>Por que escolher o SelectFlow?</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">⭐</div>
+                            <h3>Matching Inteligente</h3>
+                            <p>Algoritmos avançados conectam candidatos e empresas com base em compatibilidade real.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✅</div>
+                            <h3>Processo Simplificado</h3>
+                            <p>Interface intuitiva que torna o recrutamento mais eficiente para todos.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">👥</div>
+                            <h3>Comunidade Ativa</h3>
+                            <p>Rede crescente de profissionais e empresas em busca de oportunidades.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta">
+                <div class="container">
+                    <h2>Pronto para encontrar sua próxima oportunidade?</h2>
+                    <p>Junte-se a milhares de profissionais e empresas que já confiam no SelectFlow.</p>
+                    <div class="cta-actions">
+                        <button class="btn btn-secondary btn-lg" onclick="showRegister()">
+                            Cadastrar como Candidato
+                        </button>
+                        <button class="btn btn-outline-white btn-lg" onclick="showRegister()">
+                            Cadastrar como Empresa
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <img src="SelectFlowBranco.png" alt="SelectFlow" class="footer-logo">
+                        <div class="footer-text">
+                            © 2024 SelectFlow. Todos os direitos reservados.
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="page hidden">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <button class="back-btn" onclick="showPreview()">
+                            ← Voltar ao início
+                        </button>
+                        <div class="auth-logo">
+                            <img src="MaletaSF.png" alt="SelectFlow" class="logo-icon">
+                            <img src="SelectFlow_2.png" alt="SelectFlow" class="logo-text">
+                        </div>
+                        <h2>Entre na sua conta</h2>
+                    </div>
+
+                    <form id="login-form-element" class="auth-form">
+                        <div class="user-type-selector">
+                            <label>Tipo de usuário</label>
+                            <div class="user-type-buttons">
+                                <button type="button" class="user-type-btn active" data-type="candidate">
+                                    Candidato
+                                </button>
+                                <button type="button" class="user-type-btn" data-type="company">
+                                    Empresa
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <span class="input-icon">📧</span>
+                                <input type="email" id="login-email" placeholder="seu@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Senha</label>
+                            <div class="input-group">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="login-password" placeholder="••••••••" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Entrar
+                        </button>
+
+                        <button type="button" class="btn btn-outline btn-full" onclick="googleLogin()">
+                            <span class="google-icon">G</span>
+                            Entrar com Google
+                        </button>
+
+                        <div class="auth-footer">
+                            <p>Não tem uma conta? 
+                                <button type="button" class="link-btn" onclick="showRegister()">
+                                    Cadastre-se
+                                </button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form" class="page hidden">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <button class="back-btn" onclick="showPreview()">
+                            ← Voltar ao início
+                        </button>
+                        <div class="auth-logo">
+                            <img src="MaletaSF.png" alt="SelectFlow" class="logo-icon">
+                            <img src="SelectFlow_2.png" alt="SelectFlow" class="logo-text">
+                        </div>
+                        <h2>Crie sua conta</h2>
+                    </div>
+
+                    <form id="register-form-element" class="auth-form">
+                        <div class="user-type-selector">
+                            <label>Tipo de usuário</label>
+                            <div class="user-type-buttons">
+                                <button type="button" class="user-type-btn active" data-type="candidate">
+                                    Candidato
+                                </button>
+                                <button type="button" class="user-type-btn" data-type="company">
+                                    Empresa
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="name-label">Nome completo</label>
+                            <div class="input-group">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="register-name" placeholder="João Silva" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="company-name-group" style="display: none;">
+                            <label>Nome da empresa</label>
+                            <div class="input-group">
+                                <span class="input-icon">🏢</span>
+                                <input type="text" id="register-company" placeholder="Empresa ABC Ltda">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <span class="input-icon">📧</span>
+                                <input type="email" id="register-email" placeholder="seu@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Senha</label>
+                            <div class="input-group">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="register-password" placeholder="••••••••" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Criar conta
+                        </button>
+
+                        <button type="button" class="btn btn-outline btn-full" onclick="googleLogin()">
+                            <span class="google-icon">G</span>
+                            Cadastrar com Google
+                        </button>
+
+                        <div class="auth-footer">
+                            <p>Já tem uma conta? 
+                                <button type="button" class="link-btn" onclick="showLogin()">
+                                    Entre
+                                </button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="page hidden">
+            <div class="dashboard-layout">
+                <aside class="sidebar" id="sidebar">
+                    <!-- Sidebar content will be loaded here -->
+                </aside>
+                <main class="main-content" id="main-content">
+                    <!-- Main content will be loaded here -->
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
